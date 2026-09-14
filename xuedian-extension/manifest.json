@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "学点什么",
+  "version": "0.4.0",
+  "description": "进入知乎问题页后，左侧学点什么自动生成学习路径。默认对接公网后端 http://47.99.56.179",
+  "icons": {
+    "16": "assets/kanshan.png",
+    "48": "assets/kanshan.png",
+    "128": "assets/kanshan.png"
+  },
+  "action": {
+    "default_title": "学点什么",
+    "default_icon": "assets/kanshan.png",
+    "default_popup": "popup/popup.html"
+  },
+  "options_page": "options/options.html",
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.zhihu.com/*",
+    "http://127.0.0.1:8787/*",
+    "http://localhost:8787/*",
+    "http://47.99.56.179/*",
+    "http://47.99.56.179:8787/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.zhihu.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/sidebar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["https://www.zhihu.com/*"]
+    }
+  ]
+}

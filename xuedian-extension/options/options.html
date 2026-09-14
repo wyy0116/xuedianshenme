@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学点什么 · 设置</title>
+  <style>
+    :root {
+      --ink: #1a1f2e;
+      --muted: #5c6578;
+      --line: #d8dee9;
+      --bg: #f4f6fa;
+      --card: #fff;
+      --accent: #1a66ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      padding: 32px 20px;
+    }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    h1 { margin: 0 0 8px; font-size: 22px; }
+    p { margin: 0 0 20px; color: var(--muted); line-height: 1.6; font-size: 14px; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+    .presets button, .save {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .save {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+    #status { margin-top: 14px; font-size: 13px; color: var(--muted); min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>学点什么 · API 地址</h1>
+    <p>扩展会把知乎问题页的标题发给这台「学点什么」后端，用 Access Secret 生成学习路径，无需知乎账号登录。</p>
+    <label for="apiBase">后端根地址（不要末尾斜杠）</label>
+    <input id="apiBase" type="url" placeholder="http://47.99.56.179" />
+    <div class="presets">
+      <button type="button" data-base="http://47.99.56.179">云服务器（公网）</button>
+      <button type="button" data-base="http://47.99.56.179:8787">云 :8787</button>
+      <button type="button" data-base="http://127.0.0.1:8787">本机</button>
+    </div>
+    <button class="save" type="button" id="save">保存</button>
+    <div id="status"></div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
